@@ -35,6 +35,7 @@ bool set_up_RTC(){
 }
 
 /*
+* @prerequisite Set up the RTC with `set_up_RTC()` in this file
 * Prints the current time in the RTC
 */
 void printTime(){
@@ -59,6 +60,7 @@ void printTime(){
 }
 
 /*
+* @prerequisite Set up the RTC with `set_up_RTC()` in this file
 * Stores the various time variables in the internal storage
 */
 void rememberTime(){
