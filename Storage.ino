@@ -8,8 +8,6 @@
 #include <Preferences.h>
 #include <nvs_flash.h>
 
-Preferences preferences;
-
 /*
 * Sets up the internal storage system
 * @return true if the storage is set up properly else false
@@ -31,6 +29,13 @@ void set_count(){
 */
 void increase_count(){
   preferences.putULong("count", preferences.getULong("count", 0));
+}
+
+/*
+* Dummy example to show changing value in internal storage
+*/
+void print_count(){
+  Serial.println(preferences.getULong("count", 0));
 }
 
 /*

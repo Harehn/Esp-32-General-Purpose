@@ -6,12 +6,15 @@
 */
 
 #include <Wire.h>
+#include <Preferences.h>
  
 #define VERBOSE false
 #define I2C_SDA 21
 #define I2C_SCL 22
 #define PIN_IN 16
 #define PIN_OUT 17
+
+Preferences preferences;
 
 void setup() {
   //------------------- SET UP DRIVERS AND CODE ---------------------------
@@ -21,6 +24,7 @@ void setup() {
   if(! set_up_temperature()) Serial.println("Error in Setting temperature sensor.");
   if(! set_up_ledc()) Serial.println("Error in setting up ledc.");
   if(! set_up_storage()) Serial.println("Storage didn't set up properly.");
+  if(! set_up_RTC()) Serial.println("RTC didn't set up properly.");
 
   //------------------- OTHER INITIALIZATIONS -----------------------------
   set_count();
@@ -39,6 +43,10 @@ void loop() {
   
   //-------------------- COUNT UPDATE/INTERNAL STORAGE --------------------
   increase_count();
+  print_count();
+
+  //------------------- PRINT TIME ---------------------------------------
+  printTime();
 
   //-------------------- REPEATER -----------------------------------------
   digitalWrite(PIN_OUT, digitalRead(PIN_IN));
