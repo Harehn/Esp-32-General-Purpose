@@ -23,7 +23,7 @@ const byte month = 6;
 const byte year = 2015;
 
 /*
-* You up the RTC clock to a specific time and date  
+* You set up the RTC clock to a specific time and date  
 * You can also set it with compile time and date
 * @return true if the clock is set up properly else false
 */

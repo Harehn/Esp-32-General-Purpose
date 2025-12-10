@@ -25,6 +25,7 @@ void setup() {
   if(! set_up_ledc()) Serial.println("Error in setting up ledc.");
   if(! set_up_storage()) Serial.println("Storage didn't set up properly.");
   if(! set_up_RTC()) Serial.println("RTC didn't set up properly.");
+  if(! set_up_BLE()) Serial.println("Bluetooth didn't set up properly.");
 
   //------------------- OTHER INITIALIZATIONS -----------------------------
   set_count();
@@ -47,6 +48,9 @@ void loop() {
 
   //------------------- PRINT TIME ---------------------------------------
   printTime();
+
+  //------------------- BLE SCAN -----------------------------------------
+  scan_BLE();
 
   //-------------------- REPEATER -----------------------------------------
   digitalWrite(PIN_OUT, digitalRead(PIN_IN));
