@@ -6,6 +6,7 @@
 */
 
 #include <Preferences.h>
+#include <nvs_flash.h>
 
 Preferences preferences;
 
@@ -29,15 +30,17 @@ void set_count(){
 * Dummy example to show changing value in internal storage
 */
 void increase_count(){
-  preferences.putULong("count", preferences.getUlong("count", 0));
+  preferences.putULong("count", preferences.getULong("count", 0));
 }
 
 /*
-* Clears the internal storage system
+* Clears the internal storage system and does a permanent reset
 * @return true if the storage is cleared properly else false
 */
 bool clear_storage(){
   preferences.clear();
   preferences.end();
+  nvs_flash_erase(); // erase the NVS partition and...
+  nvs_flash_init(); // initialize the NVS partition.
   return true;
 }

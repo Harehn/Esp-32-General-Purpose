@@ -18,7 +18,7 @@ void setup() {
   if(! I2C_check(VERBOSE)) Serial.println("Error in I2C.");
   if(! set_up_temperature()) Serial.println("Error in Setting temperature sensor.");
   if(! set_up_ledc()) Serial.println("Error in setting up ledc.");
-  if(! set_up_storage()) Serial.println("Storage didn't set up properly.")
+  if(! set_up_storage()) Serial.println("Storage didn't set up properly.");
 
   //------------------- OTHER INITIALIZATIONS -----------------------------
   set_count();
