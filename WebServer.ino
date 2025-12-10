@@ -15,14 +15,24 @@ const char *password = "........";
 
 WebServer server(80);
 
+/*
+* Example function for returning for a route 
+*/
 void handleRoot() {
   server.send(200, "text/plain", "hello from esp32!");
 }
 
-void handleRoot() {
-    server.send(404, "text/plain", message);
+/*
+* Example function for returning for a route 
+*/
+void handleNotFound() {
+    server.send(404, "text/plain", "Page Not Found");
 }
 
+/*
+* Create and set up the server
+* @return true if set up properly else false 
+*/
 bool set_up_server() {
   //------------------ SET UP -----------------------------
   WiFi.mode(WIFI_STA);
@@ -62,6 +72,10 @@ bool set_up_server() {
   Serial.println("HTTP server started");
 }
 
+/*
+* @prerequisite needs the server to be set up
+* wrapper for server handle client 
+*/
 void server_update(){
   server.handleClient();
   delay(2);  //allow the cpu to switch to other tasks

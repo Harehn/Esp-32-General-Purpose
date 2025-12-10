@@ -26,6 +26,7 @@ void setup() {
   if(! set_up_storage()) Serial.println("Storage didn't set up properly.");
   if(! set_up_RTC()) Serial.println("RTC didn't set up properly.");
   if(! set_up_BLE()) Serial.println("Bluetooth didn't set up properly.");
+  if(! set_up_server()) Serial.println("Server didn't set up properly.");
 
   //------------------- OTHER INITIALIZATIONS -----------------------------
   set_count();
@@ -51,6 +52,9 @@ void loop() {
 
   //------------------- BLE SCAN -----------------------------------------
   scan_BLE();
+
+  //------------------- SERVER HANDLE ------------------------------------
+  server_update();
 
   //-------------------- REPEATER -----------------------------------------
   digitalWrite(PIN_OUT, digitalRead(PIN_IN));
