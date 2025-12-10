@@ -10,6 +10,8 @@
 #define VERBOSE false
 #define I2C_SDA 21
 #define I2C_SCL 22
+#define PIN_IN 16
+#define PIN_OUT 17
 
 void setup() {
   //------------------- SET UP DRIVERS AND CODE ---------------------------
@@ -22,6 +24,8 @@ void setup() {
 
   //------------------- OTHER INITIALIZATIONS -----------------------------
   set_count();
+  pinMode(PIN_IN, INPUT);
+  pinMode(PIN_OUT, OUTPUT);
 }
  
 void loop() {
@@ -35,6 +39,9 @@ void loop() {
   
   //-------------------- COUNT UPDATE/INTERNAL STORAGE --------------------
   increase_count();
+
+  //-------------------- REPEATER -----------------------------------------
+  digitalWrite(PIN_OUT, digitalRead(PIN_IN));
 
   delay(5000);
 }
